@@ -1,6 +1,7 @@
-- hosts: {{ target_hosts }}
+- hosts: "{{ target_hosts }}"
   roles:
     - common
+  user: root
   tasks:
     - import_tasks: roles/ubuntu/tasks/initialization.yml
     - import_tasks: roles/python/tasks/install-python.yml

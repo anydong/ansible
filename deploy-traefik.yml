@@ -1,6 +1,7 @@
-- hosts: {{ target_hosts }}
+- hosts: "{{ target_hosts }}"
   roles:
     - common
+  user: root
   vars:
     - application_name=traefik
   tasks:

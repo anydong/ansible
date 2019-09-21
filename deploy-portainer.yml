@@ -1,6 +1,7 @@
-- hosts: {{ target_hosts }}
+- hosts: "{{ target_hosts }}"
   roles:
     - common
+  user: root
   tasks:
     - name: 复制 portainer 文件
       synchronize:
