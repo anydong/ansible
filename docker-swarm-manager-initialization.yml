@@ -1,22 +1,25 @@
 - hosts: "{{ target_hosts }}"
   roles:
     - common
-  user: ubuntu
+  user: root
   tasks:
     - import_tasks: ./roles/ubuntu/tasks/initialization.yml
     - import_tasks: ./roles/python/tasks/install-python.yml
     - import_tasks: ./roles/ubuntu/tasks/install-docker.yml
     - import_tasks: roles/docker/tasks/install-docker-compose.yml
     - name: Init a new swarm with default parameters
+      become: yes
       docker_swarm:
         state: present
         advertise_addr: "{{ private_ip }}"
     - name: 新建 `custom-frontend` 网络
+      become: yes
       docker_network:
         name: custom-frontend
         state: present
         driver: overlay 
     - name: 新建 `custom-backend` 网络
+      become: yes
       docker_network:
         name: custom-backend
         state: present
