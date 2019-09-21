@@ -1,7 +1,7 @@
 # 接下来的两条命令是为了解决 Docker 使用中一些奇形怪状的问题
-- name: upgrade pip
-  become: yes
-  shell: pip install --upgrade pip
+# - name: 安装 pip
+#   become: yes
+#   shell: curl -sL https://bootstrap.pypa.io/get-pip.py | sudo -E python -
 - name: uninstall urllib3 chardet
   become: yes
   pip: 
