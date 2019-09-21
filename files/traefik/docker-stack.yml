@@ -6,8 +6,6 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
-      labels:
-        - traefik.enable=false
     networks:
       - frontend
       - backend
@@ -16,6 +14,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: 
+      - "--providers.docker.exposedbydefault=false"
       - "--providers.docker.swarmMode=true"
 
 networks:
