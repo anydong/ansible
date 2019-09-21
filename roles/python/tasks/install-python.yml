@@ -1,0 +1,18 @@
+# 接下来的两条命令是为了解决 Docker 使用中一些奇形怪状的问题
+- name: upgrade pip
+  become: yes
+  shell: pip install --upgrade pip
+- name: uninstall urllib3 chardet
+  become: yes
+  pip: 
+    name: 
+      - urllib3
+      - chardet
+    state: absent
+- name: install requests
+  become: yes
+  pip: 
+    name: 
+      - requests
+      - jsondiff
+    state: latest 

@@ -1,0 +1,5 @@
+# 自动补全忽略大小写
+set completion-ignore-case on
+# 输入某个命令的一部分时，按上下箭头，会匹配关于这个这命令最近的使用历史
+"\e[A": history-search-backward
+"\e[B": history-search-forward

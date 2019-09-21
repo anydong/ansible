@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  reverse-proxy:
+    image: traefik:v2.0.0
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+      labels:
+        - traefik.enable=false
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: 
+      - "--providers.docker.swarmMode=true"
+
+networks:
+  frontend:
+    external: 
+      name: custom-frontend
+  backend:
+    external:
+      name: custom-backend

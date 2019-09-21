@@ -1,0 +1,17 @@
+- name: 安装 PHP
+  apt:
+    name:
+      - php7.2-cli
+      - php7.2-common
+      - php7.2-mbstring
+      - php7.2-xml
+      - php7.2-zip
+    state: latest
+    update_cache: yes
+# 包来源：https://developer.aliyun.com/composer
+- name: 安装 composer
+  become: yes
+  get_url:
+    url: https://mirrors.aliyun.com/composer/composer.phar
+    dest: /usr/local/bin/composer
+    mode: a+x

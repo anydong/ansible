@@ -1,0 +1,12 @@
+- name: 安装 Java、Maven
+  apt:
+    name:
+      - openjdk-11-jdk
+      - maven
+    state: latest
+    update_cache: yes
+- name: install maven
+  become: true
+  apt:
+    name: maven
+    state: latest

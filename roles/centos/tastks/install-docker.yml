@@ -1,0 +1,36 @@
+# Get Docker CE for CentOS https://docs.docker.com/engine/installation/linux/docker-ce/centos/
+- name: 卸载 yum 自带 docker
+  become: yes
+  yum:
+    name: 
+      - docker
+      - docker-client
+      - docker-client-latest
+      - docker-common
+      - docker-latest
+      - docker-latest-logrotate
+      - docker-logrotate
+      - docker-engine
+    state: absent
+- name: yum 安装 yum-utils device-mapper-persistent-data lvm2
+  become: yes
+  yum:
+    name: 
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+    state: latest
+- name: yum repo 配置
+  become: yes
+  command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+- name: yum install docker-ce
+  become: yes
+  yum:
+    name: 
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io
+    state: latest
+- name: 启动 docker
+  become: yes
+  command: systemctl start docker

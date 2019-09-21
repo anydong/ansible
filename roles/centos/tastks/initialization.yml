@@ -1,0 +1,44 @@
+- name: set timezone
+  become: yes
+  timezone:
+    name: "{{ TZ }}"
+- name: update yum
+  become: true
+  yum:
+    name: '*'
+    state: latest
+- name: install vim
+  become: true
+  yum:
+    name: vim
+    state: latest
+- name: install wget
+  become: true
+  yum:
+    name: wget
+    state: latest 
+- name: install mosh
+  become: yes
+  yum:
+    name: mosh
+    state: latest
+- name: install screen
+  become: yes
+  yum:
+    name: screen
+    state: latest
+- name: install git
+  become: true
+  yum:
+    name: git
+    state: latest
+- name: copy .inputrc
+  become: yes
+  copy:
+    src: roles/common/files/dotfile/.inputrc
+    dest: /root/.inputrc
+- name: copy .vimrc
+  become: yes
+  copy:
+    src: roles/common/files/dotfile/.vimrc
+    dest: /root/.vimrc

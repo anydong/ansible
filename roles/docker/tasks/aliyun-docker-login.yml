@@ -1,0 +1,6 @@
+- name: 登录 Aliyun 容器镜像
+  docker_login:
+    registry: registry-vpc.cn-hongkong.aliyuncs.com
+    username: appus_technology
+    password: OmyCAR@123456
+    reauthorize: yes

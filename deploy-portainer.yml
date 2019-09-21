@@ -1,0 +1,15 @@
+- hosts: {{ target_hosts }}
+  roles:
+    - common
+  tasks:
+    - name: 复制 portainer 文件
+      synchronize:
+        src: files/portainer
+        dest: /root/application
+    - name: Deploy stack from a compose file
+      docker_stack:
+        state: present
+        name: portainer
+        with_registry_auth: yes
+        compose:
+          - /root/application/portainer/docker-agent-stack.yml

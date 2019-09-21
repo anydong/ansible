@@ -1,0 +1,17 @@
+- hosts: {{ target_hosts }}
+  roles:
+    - common
+  vars:
+    - application_name=traefik
+  tasks:
+    - name: 复制 traefik 文件
+      synchronize:
+        src: files/traefik
+        dest: /root/application
+    - name: Deploy stack from a compose file
+      docker_stack:
+        state: present
+        name: traefik
+        with_registry_auth: yes
+        compose:
+          - /root/application/traefik/docker-stack.yml

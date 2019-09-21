@@ -1,0 +1,8 @@
+- name: download acme.sh
+  get_url:
+    url: https://get.acme.sh
+    dest: /tmp/acme.sh
+- name: install acme.sh
+  shell: sh /tmp/acme.sh
+- name: generate dhparam.pem
+  shell: openssl dhparam -dsaparam -out /root/.acme.sh/dhparam.pem 4096

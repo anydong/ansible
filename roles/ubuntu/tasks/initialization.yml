@@ -1,0 +1,35 @@
+- name: 设置时区
+  become: yes
+  timezone:
+    name: {{ timezone }}
+- name: 更新已有软件
+  become: yes
+  apt:
+    update_cache: yes
+    upgrade: yes
+- name: Ensure a locale exists
+  locale_gen:
+    name: zh_CN.UTF-8
+    state: present
+- name: 安装常用的软件
+  become: yes
+  apt:
+    name:
+      - curl
+      - git
+      - mosh
+      - python
+      - screen
+      - wget
+      - vim
+    state: latest
+- name: copy .inputrc
+  become: yes
+  copy:
+    src: roles/common/files/dotfile/.inputrc
+    dest: /root/.inputrc
+- name: copy .vimrc
+  become: yes
+  copy:
+    src: roles/common/files/dotfile/.vimrc
+    dest: /root/.vimrc
