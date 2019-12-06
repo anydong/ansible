@@ -1,5 +1,9 @@
 # ansible
 
+## 架构思想
+
+[基于 Docker Swarm 项目部署架构](https://www.yuque.com/where/dib969/bg1cff)  
+
 ## 如何使用
 
 ```bash
