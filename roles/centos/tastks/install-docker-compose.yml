@@ -1,4 +1,0 @@
-# Install Docker Compose https://docs.docker.com/compose/install/
-- name: 安装 docker-compose
-  become: yes
-  shell: pip install docker-compose

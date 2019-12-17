@@ -5,5 +5,5 @@
   tasks:
     - import_tasks: roles/ubuntu/tasks/initialization.yml
     - import_tasks: roles/python/tasks/install-python.yml
-    - import_tasks: roles/ubuntu/tasks/install-docker.yml
+    - import_tasks: roles/docker/tasks/install-docker.yml
     - import_tasks: roles/docker/tasks/install-docker-compose.yml
