@@ -1,8 +1,0 @@
-# 参考：https://github.com/nodesource/distributions#debinstall
-- name: 安装 Node.js
-  become: yes
-  shell: curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-- name: 安装 Node.js
-  apt:
-    name: nodejs
-    state: latest

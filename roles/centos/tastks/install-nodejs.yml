@@ -1,0 +1,4 @@
+# 参考：https://github.com/nodesource/distributions#enterprise-linux-based-distributions
+- name: 安装 Node.js
+  become: yes
+  shell: curl -sL https://rpm.nodesource.com/setup_13.x | bash -
