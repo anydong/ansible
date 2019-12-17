@@ -1,0 +1,6 @@
+- name: download install-docker.sh
+  get_url:
+    url: https://get.docker.com/
+    dest: /tmp/install-docker.sh
+- name: install install-docker.sh
+  shell: bash /tmp/install-docker.sh
