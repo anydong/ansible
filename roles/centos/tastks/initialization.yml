@@ -5,32 +5,14 @@
 - name: update yum
   become: true
   yum:
-    name: '*'
-    state: latest
-- name: install vim
-  become: true
-  yum:
-    name: vim
-    state: latest
-- name: install wget
-  become: true
-  yum:
-    name: wget
-    state: latest 
-- name: install mosh
-  become: yes
-  yum:
-    name: mosh
-    state: latest
-- name: install screen
-  become: yes
-  yum:
-    name: screen
-    state: latest
-- name: install git
-  become: true
-  yum:
-    name: git
+    name: 
+      - curl
+      - wget
+      - vim
+      - git
+      - mosh
+      - screen
+    update_cache: yes
     state: latest
 - name: copy .inputrc
   become: yes
